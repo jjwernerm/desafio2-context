@@ -1,6 +1,6 @@
-import { Nav, Navbar, Container } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-import { FcHome, FcLikePlaceholder, FcLike, FcAssistant } from "react-icons/fc";
+import { Nav, Navbar, Container } from 'react-bootstrap';//importando componentes de bootstrap
+import { FcHome, FcLike } from "react-icons/fc";//importando componentes para íconos
+import { Link } from "react-router-dom";//importando componente de react router
 
 function BasicExample() {
   return (
@@ -13,17 +13,11 @@ function BasicExample() {
               to="/" className="text-white ms-3 text-decoration-none"><FcHome /> Home
             </Link>
             <Link
-              to="/dog" className="text-white ms-3 text-decoration-none"><FcLikePlaceholder /> Dog
-            </Link>
-            <Link
-              to="/cat" className="text-white ms-3 text-decoration-none"><FcLike /> Cat
-            </Link>
-            <Link
-              to="/contacto" className="text-white ms-3 text-decoration-none"><FcAssistant /> Contacto
+              to="/like" className="text-white ms-3 text-decoration-none"><FcLike /> Favoritas
             </Link>
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand className="fw-bold"><h1>Happy Pet <img src="../logo.png" alt="" /></h1></Navbar.Brand>
+        <Navbar.Brand className="fw-bold"><h1>Natural Pic</h1></Navbar.Brand>
       </Container>
     </Navbar>
   );

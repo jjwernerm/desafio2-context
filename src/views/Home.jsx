@@ -1,46 +1,37 @@
-import { Container, Button } from "react-bootstrap";
-import { FcLikePlaceholder, FcLike } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";//Importando componente de bootstrap
+import { useContext } from "react";//importando hooks
+import MyContext from "../my_context";//importando el context
 
 export default () => {
+
+  const { fotos, setFotos } = useContext(MyContext);
+
+  const setFavorito = (id) => {
+    const fotoIndex = fotos.findIndex((f) => f.id === id);
+    fotos[fotoIndex].favorito = !fotos[fotoIndex].favorito;
+    setFotos([...fotos]);
+  };
+
   return (
     <Container fluid>
-      <div className="header">
-        <h1 className="h1-header">Bienvenido a 
-          <span className="fw-bold"> Happy Pet</span> 
-        </h1>
-        <h5 className="h1-header">
-          aquí podrás adoptar tu mascota preferida
-        </h5>
+      <div className="home">
+        <h1>Natural Pic</h1>
       </div>
       <br />
-      <div className="dog">
-        <h1 className="h1-dog">
-          Adopta un perrito o una perrita
-        </h1>
-        <Link
-          to="/dog" className="text-white ms-3 text-decoration-none">
-          <Button className="btn-happy-pet">
-            <FcLikePlaceholder /> 
-              Ver Perritos 
-            <FcLikePlaceholder />
-          </Button>
-        </Link>
-      </div>
-      <br />
-      <div className="cat">
-        <h1 className="h1-cat">
-          Adopta un gatito o a una gatita
-        </h1>
-        <Link
-          to="/cat" className="text-white ms-3 text-decoration-none">
-          <Button className="btn-happy-pet">
-            <FcLike /> 
-              Ver Gatitos 
-            <FcLike />
-          </Button>
-        </Link>
-      </div>
+
+      {fotos.map((foto, i) => (
+        <div
+          onClick={() => setFavorito(foto.id)}
+          className="foto"
+          style={{ backgroundImage: `url(${foto.src})` }}
+          key={i}
+        >
+          {/* <Heart filled={foto.favorito} /> */}
+
+          <p> {foto.desc} </p>
+        </div>
+      ))}
+
     </Container>
   );
 };
