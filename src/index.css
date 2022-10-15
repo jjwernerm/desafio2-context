@@ -7,9 +7,33 @@
 	vertical-align: baseline;
 }
 
+h1 {
+	text-align: center;
+}
+
+/* Navbar.jsx */
+
 .nav-bar {
   background-color: #03989e;
 }
+
+/* Home.jsx */
+
+.galeria {
+  grid-template-columns: repeat(5, 1fr);
+	display: grid;
+  gap: 1em;	
+}
+
+.img-natural {
+	background-position: center;
+	background-size: cover;
+	cursor: pointer;
+	height: 15em;
+	width: 15em;
+}
+
+/* Footer.jsx */
 
 .footer {
 	background-color: #DDAC9D;

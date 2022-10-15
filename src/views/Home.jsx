@@ -4,34 +4,21 @@ import MyContext from "../my_context";//importando el context
 
 export default () => {
 
-  const { fotos, setFotos } = useContext(MyContext);
-
-  const setFavorito = (id) => {
-    const fotoIndex = fotos.findIndex((f) => f.id === id);
-    fotos[fotoIndex].favorito = !fotos[fotoIndex].favorito;
-    setFotos([...fotos]);
-  };
+  const { fotos } = useContext(MyContext);
 
   return (
-    <Container fluid>
+    <Container>
       <div className="home">
         <h1>Natural Pic</h1>
       </div>
-      <br />
-
-      {fotos.map((foto, i) => (
-        <div
-          onClick={() => setFavorito(foto.id)}
-          className="foto"
-          style={{ backgroundImage: `url(${foto.src})` }}
-          key={i}
-        >
-          {/* <Heart filled={foto.favorito} /> */}
-
-          <p> {foto.desc} </p>
-        </div>
-      ))}
-
+      <div className="galeria">
+        {fotos.map((foto, i) => (
+          <div className="img-natural"
+            style={{ backgroundImage: `url(${foto.src})` }}
+            key={i}
+          ></div>
+        ))}
+      </div>
     </Container>
   );
 };
